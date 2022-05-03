@@ -2,6 +2,8 @@ import 'dotenv/config.js'
 import express from 'express'
 import logger from 'morgan'
 import cors from 'cors'
+require("dotenv").config();
+const PORT = process.env.PORT;
 
 import { router as profilesRouter } from './routes/profiles.js'
 import { router as authRouter } from './routes/auth.js'
@@ -27,5 +29,5 @@ app.use(function (err, req, res, next) {
 
 export { app }
 
-
-//test comment
+//PORT LISTENING
+app.listen(PORT, () => console.log(`Server running on portL ${PORT}`));
