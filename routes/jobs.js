@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import * as jobsCtrl from "../controllers/job"
-import { decodeUserFromToken, checkAuth, isAdmin } from "../middleware/auth.js"
+import * as jobsCtrl from "../controllers/job.js"
+import { decodeUserFromToken, checkAuth } from "../middleware/auth.js"
 
 const router = Router();
 

@@ -2,8 +2,6 @@ import 'dotenv/config.js'
 import express from 'express'
 import logger from 'morgan'
 import cors from 'cors'
-require("dotenv").config();
-const PORT = process.env.PORT;
 
 import { router as profilesRouter } from './routes/profiles.js'
 import { router as authRouter } from './routes/auth.js'
@@ -19,7 +17,7 @@ app.use(express.json())
 
 app.use('/api/profiles', profilesRouter)
 app.use('/api/auth', authRouter)
-app.use('/api/job', jobController)
+app.use('/api/job', jobRouter)
 
 app.use(function (req, res, next) {
   res.status(404).json({ err: "Not found" })
@@ -30,6 +28,3 @@ app.use(function (err, req, res, next) {
 })
 
 export { app }
-
-//PORT LISTENING
-app.listen(PORT, () => console.log(`Server running on portL ${PORT}`));

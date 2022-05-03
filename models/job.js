@@ -1,8 +1,8 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
-    _id: ObjectId,
+    _id: {type: Schema.Types.ObjectId, ref: "id"},
     city: {type: String, required: true},
     state: {type: String, required: true},
     company: {type: String, required: true},
@@ -19,4 +19,7 @@ const jobSchema = new Schema({
 
 
 //export statement
-module.export = mongoose.model('Job', jobSchema);
+const Job = mongoose.model('Job', jobSchema);
+
+
+export { Job };

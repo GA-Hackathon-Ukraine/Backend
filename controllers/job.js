@@ -1,7 +1,4 @@
-//dependencies
-
-//import
-const Job = require("../models/job");
+import { Job } from '../models/job.js'
 
 function index(req, res) {
     Job.find({})
