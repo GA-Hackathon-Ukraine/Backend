@@ -5,14 +5,21 @@ function show(req, res) {
     res.status(201).json(job);
   });
 }
+
 function create(req, res) {
-  Job.create(req.body)
-    .then((job) => {
-      res.json(job);
+  Job.create(req.body).then(job => {
+    res.json({
+        status: 200,
+        msg: job
     })
-    .catch((err) => {
-      res.json(err);
-    });
+})
+  // Job.create(req.body)
+  //   .then((job) => {
+  //     res.json(job);
+  //   })
+  //   .catch((err) => {
+  //     res.json(err);
+  //   });
 }
 
 function index(req, res) {
