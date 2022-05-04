@@ -15,6 +15,7 @@ const jobSchema = new Schema({
     industry: String,
     url: String,
     compensation: String,
+    owner: { type: Schema.Types.ObjectId, ref: "Profile" },
 }, {timestamps: true})
 
 
