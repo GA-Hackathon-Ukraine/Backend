@@ -23,14 +23,16 @@ function create(req, res) {
 }
 
 function index(req, res) {
+  console.log("INDEX", req.body);
   Job.find({})
-    .populate()
-    .then((jobs) => {
-      res.json(jobs);
+    // .populate()
+    .then((job) => {
+      res.json(job);
     })
     .catch((err) => {
       res.json(err);
     });
+    console.log("INDEXEND", req.body);
 }
 
 function edit(req, res) {
