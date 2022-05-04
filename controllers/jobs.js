@@ -7,17 +7,19 @@ function show(req, res) {
 }
 
 function create(req, res) {
-  console.log("CREATE", req.body);
-  Job.create(req.body).save()
-    .then((job) => {
-      res.json({
-        msg: job,
-      });
+  Job.create(req.body).then(job => {
+    res.json({
+        status: 200,
+        msg: job
     })
-    .catch((err) => {
-      res.json(err);
-    });
-  console.log("CREATE_SAVE", req.body._id);
+})
+  // Job.create(req.body)
+  //   .then((job) => {
+  //     res.json(job);
+  //   })
+  //   .catch((err) => {
+  //     res.json(err);
+  //   });
 }
 
 function index(req, res) {
