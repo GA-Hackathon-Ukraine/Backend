@@ -9,7 +9,7 @@ router.get('/', jobsCtrl.index);
 
 //private routes
 router.use(decodeUserFromToken)
-router.post("/add", checkAuth, jobsCtrl.create);
+router.post("/", checkAuth, jobsCtrl.create);
 router.get("/:id", checkAuth, jobsCtrl.show);
 router.put("/:id", checkAuth, jobsCtrl.edit);
 router.delete("/:id", checkAuth, jobsCtrl.delete);

@@ -5,25 +5,32 @@ function show(req, res) {
     res.status(201).json(job);
   });
 }
+
 function create(req, res) {
-  Job.create(req.body)
+  console.log("CREATE", req.body);
+  Job.create(req.body).save()
+    .then((job) => {
+      res.json({
+        msg: job,
+      });
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+  console.log("CREATE_SAVE", req.body._id);
+}
+
+function index(req, res) {
+  console.log("INDEX", req.body);
+  Job.find({})
+    // .populate()
     .then((job) => {
       res.json(job);
     })
     .catch((err) => {
       res.json(err);
     });
-}
-
-function index(req, res) {
-  Job.find({})
-    .populate()
-    .then((jobs) => {
-      res.json(jobs);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
+    console.log("INDEXEND", req.body);
 }
 
 function edit(req, res) {
