@@ -16,9 +16,9 @@ const jobSchema = new Schema(
     industry: String,
     url: String,
     compensation: String,
-  },
-  { timestamps: true }
-);
+    owner: { type: Schema.Types.ObjectId, ref: "Profile" },
+}, {timestamps: true})
+
 
 //export statement
 const Job = mongoose.model("Job", jobSchema);

@@ -7,7 +7,8 @@ function show(req, res) {
 }
 
 function create(req, res) {
-  Job.create(req.body).then((job) => {
+  req.body.owner = req.user.profile
+  Job.create(req.body).then(job => {
     res.json({
       status: 200,
       msg: job,
@@ -36,21 +37,29 @@ function index(req, res) {
 }
 
 function edit(req, res) {
-  Job.findByIdAndUpdate(req.params.id, req.body)
+  if (req.body.owner === req.user.profile) {
+    Job.findByIdAndUpdate(req.params.id, req.body)
     .then((job) => res.json(job))
     .catch((err) => {
       res.status(500).json(err);
     });
+  } else {
+    console.log("Not authorized to edit")
+  }
 }
 
 function deleteJob(req, res) {
-  Job.findByIdAndDelete(req.params.id)
+  if (req.body.owner === req.user.profile) {
+    Job.findByIdAndDelete(req.params.id)
     .then((deletedJob) => {
       res.json(deletedJob);
     })
     .catch((err) => {
       res.json(err);
     });
+  } else {
+    console.log("Not authorized to delete")
+  }
 }
 
 //export
