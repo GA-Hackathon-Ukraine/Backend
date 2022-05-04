@@ -8,7 +8,9 @@ const router = Router();
 router.get('/', jobsCtrl.index);
 
 //private routes
-router.get('/', checkAuth, jobsCtrl.show);
-
+router.post("/add", checkAuth, jobsCtrl.create);
+router.get("/:id", checkAuth, jobsCtrl.show);
+router.put("/:id", checkAuth, jobsCtrl.edit);
+router.delete("/:id", checkAuth, jobsCtrl.delete);
 
 export { router }
