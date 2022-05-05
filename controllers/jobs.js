@@ -10,10 +10,10 @@ function create(req, res) {
   // req.body.owner = req.user.profile
   Job.create(req.body).then(job => {
     res.json({
-        status: 200,
-        msg: job
-    })
-})
+      status: 200,
+      msg: job,
+    });
+  });
   // Job.create(req.body)
   //   .then((job) => {
   //     res.json(job);
@@ -33,7 +33,7 @@ function index(req, res) {
     .catch((err) => {
       res.json(err);
     });
-    console.log("INDEXEND", req.body);
+  console.log("INDEXEND", req.body);
 }
 
 function edit(req, res) {
