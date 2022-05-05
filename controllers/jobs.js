@@ -7,7 +7,7 @@ function show(req, res) {
 }
 
 function create(req, res) {
-  req.body.owner = req.user.profile
+  // req.body.owner = req.user.profile
   Job.create(req.body).then(job => {
     res.json({
       status: 200,
@@ -62,5 +62,17 @@ function deleteJob(req, res) {
   }
 }
 
+function saveJob(req, res) {
+  console.log('SAVE JOB', req.body.profile)
+  let profile = req.body.profile
+  profile.findById(res.req.body.profile,
+  {
+    $push: { job: res.req.body.jobID },
+  })
+  .then(() => {
+    console.log('SUCCESS')
+  })
+}
+
 //export
-export { index, show, create, edit, deleteJob as delete };
+export { index, show, create, edit, deleteJob as delete, saveJob };
