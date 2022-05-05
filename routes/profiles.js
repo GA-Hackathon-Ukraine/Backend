@@ -11,6 +11,6 @@ const router = Router()
 //post route for user to safe to profile
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, profilesCtrl.index)
-router.post("/saveJob/:userID/:jobID", checkAuth, profilesCtrl.saveJob);
+router.post("/saveJob/", checkAuth, profilesCtrl.saveJob);
 
 export { router }

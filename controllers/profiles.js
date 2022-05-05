@@ -13,13 +13,15 @@ function index(req, res) {
 
 function saveJob(req, res) {
   //locate user id
-  const user = User.findbyId(req.params.authorID)
-  console.log("User is: ", user )
+  console.log("UserID: ", req.body.userID)
+  const user = Profile.find(req.body.userID)
+  console.log("User is: ", user)
   //locate job id
-  const job = Job.findbyId(req.params.jobID)
+  const job = Job.find(req.body.jobID)
   console.log("Job is: ", job)
   //add job to user's profile array
-  user.profile.push(job)
+  user.job.push(job)
+  //user.job.push(req.body.id)
   //save data
   user.save();
   //return statement
@@ -27,3 +29,10 @@ function saveJob(req, res) {
 }
 
 export { index, saveJob };
+
+
+// Job.findByIdAndUpdate(req.params.id, req.body)
+//     .then((job) => res.json(job))
+//     .catch((err) => {
+//       res.status(500).json(err);
+//     });
